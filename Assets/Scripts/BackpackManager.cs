@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BackpackManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    Backpack backpack;
+    [SerializeField]
+    RectTransform panel;
+
     void Start()
     {
         
@@ -14,5 +19,25 @@ public class BackpackManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void HidePanel()
+    {
+        if(panel == null)
+        {
+            return;
+        }
+
+        panel.gameObject.SetActive(false);
+    }
+
+    public void ShowPanel()
+    {
+        if(panel == null)
+        {
+            return;
+        }
+
+        panel.gameObject.SetActive(true);
     }
 }

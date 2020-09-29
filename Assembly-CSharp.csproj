@@ -102,6 +102,7 @@
     <Compile Include="Assets\Scripts\FreeObjectsManager.cs" />
     <Compile Include="Assets\Scripts\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
+    <None Include="Assets\Libs\AutoSave\ReadMe.txt" />
     <None Include="Assets\Libs\LeanTween\ReadMe.txt" />
     <None Include="Assets\Libs\LeanTween\License.txt" />
     <None Include="Assets\Libs\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />

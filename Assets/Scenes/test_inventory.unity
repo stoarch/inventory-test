@@ -583,6 +583,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: ae12fa5a8cf07d34b9547443e28d605e, type: 2}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  draggingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1054223809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: c4cbf75a6aa56104a97318f63a6089cd, type: 2}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  draggingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1449790778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2029,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 2002bf41caa87f64284100b2178a0cf5, type: 2}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  draggingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1900531873
 GameObject:
   m_ObjectHideFlags: 0

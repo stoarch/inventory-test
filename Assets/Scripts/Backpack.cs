@@ -74,8 +74,32 @@ public class Backpack : MonoBehaviour
 
         var slot = slots[activeSlotNo++];
 
-        slot.PlaceInside(item);
+        slot.PlaceInsideAnimated(item);
 
         return slot;
+    }
+
+
+    /// <summary>
+    /// Shift all items from last slot up to this one (with reparenting) and change 
+    /// activeSlotNo to valid positions;
+    /// </summary>
+    /// <param name="slotNo">from which to start shift to end of active slots</param>
+    public void ShiftItems(int slotNo)
+    {
+        if((slotNo < 0)||(slotNo >= slots.Length)||(slotNo > activeSlotNo))
+        {
+            Debug.LogWarning($"Slot number {slotNo} is invalid. Must be [0..{slots.Length})");
+            return;
+        }
+
+        for (int i = slotNo; i < activeSlotNo; i++)
+        {
+            slots[i].ClearItem();//we not need it
+            slots[i].PlaceInsideInstant(slots[i + 1].StoredItem);
+        }
+
+        slots[activeSlotNo].ClearItem(); //and last one should be clear
+        activeSlotNo -= 1;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -12,12 +13,21 @@ public class Item : MonoBehaviour
     private Color highlightColor = Color.green;
     [SerializeField]
     private Color draggingColor = Color.yellow;
+    [SerializeField]
+    private LayerMask backpackMask;
+    [SerializeField]
+    private float workDistance = 2.0f;
 
     private bool dragging = false;
     private float distance;
     private Camera mainCamera;
     private Rigidbody body;
-    private Renderer renderer;
+    private new Renderer renderer;
+
+    private const int MAX_RAYCAST_DIST = 1000;
+    private const int LEFT_BUTTON = 0;
+
+    public bool IsPlacedInSlot { get; set; }
 
     void Start()
     {
@@ -45,21 +55,54 @@ public class Item : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+
+        IsPlacedInSlot = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (dragging)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             var rayPoint = ray.GetPoint(distance);
             transform.position = rayPoint;
+
+            if(Input.GetMouseButton(LEFT_BUTTON)) //we actively hold it, skip
+            {
+                return;
+            }
+
+            //check if we over backpack
+            RaycastHit rayHit;
+
+            if (Physics.Raycast(ray.origin, ray.direction, out rayHit, MAX_RAYCAST_DIST, backpackMask))
+            {
+                if(rayHit.collider.tag == "Backpack")//place it into backpack
+                {
+                    Backpack backpack = rayHit.collider.GetComponent<Backpack>();
+
+                    if(backpack == null)
+                    {
+                        Debug.LogError("On backpack game object not found Backpack script");
+                        return;
+                    }
+
+                    backpack.PlaceInside(this);
+
+                    IsPlacedInSlot = true;
+                }
+            }
         }        
     }
 
     private void OnMouseDown()
     {
         distance = Vector3.Distance(transform.position, mainCamera.transform.position);
+        if(distance > workDistance)
+        {
+            distance = workDistance;
+        }
+
         dragging = true;
         body.isKinematic = true;
         renderer.material.color = draggingColor;
@@ -68,7 +111,11 @@ public class Item : MonoBehaviour
     private void OnMouseUp()
     {
         dragging = false;
-        body.isKinematic = false;
+        if (!IsPlacedInSlot)
+        {
+            body.isKinematic = false;
+        }
+
         renderer.material.color = originalColor;
     }
 

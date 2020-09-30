@@ -6,6 +6,13 @@ using UnityEngine.Events;
 
 public class Backpack : MonoBehaviour
 {
+    public enum BackpackOperation
+    {
+        Unknown,
+        Placing,
+        Removing
+    }
+
     [SerializeField]
     UnityEvent OnShowInventory;
     [SerializeField]
@@ -13,11 +20,21 @@ public class Backpack : MonoBehaviour
     [SerializeField]
     int maxItems = 12;
     [SerializeField]
-    BackpackSlot []slots;
+    BackpackSlot[] slots;
+    [SerializeField]
+    UnityEvent OnPlacingItem;
+    [SerializeField]
+    UnityEvent OnRemovingItem;
 
     int activeSlotNo = 0;//we need to track last inventory position
+    private BackpackOperation activeOperation;
 
     public BackpackSlot this[int index] => slots[index];
+    public Item ActiveItem {get; private set;}
+    public BackpackOperation ActiveOperation => activeOperation;
+
+
+
 
     void Start()
     {
@@ -74,13 +91,32 @@ public class Backpack : MonoBehaviour
             return null;
         }
 
+        ActiveItem = item;
+        activeOperation = BackpackOperation.Placing;
+
         var slot = slots[activeSlotNo];
 
         slot.PlaceInsideAnimated(item);
 
         FindNewActiveSlotNo();
 
+        if (OnPlacingItem != null) 
+        {
+            OnPlacingItem.Invoke();
+        }
+
         return slot;
+    }
+
+    internal void ReleaseItem(Item storedItem)
+    {
+        activeOperation = BackpackOperation.Removing;
+        ActiveItem = storedItem;
+
+        if(OnRemovingItem != null)
+        {
+            OnRemovingItem.Invoke();
+        }
     }
 
     private void FindNewActiveSlotNo()

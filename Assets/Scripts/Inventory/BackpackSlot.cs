@@ -16,6 +16,8 @@ public class BackpackSlot : MonoBehaviour
     Transform freeObjects;
     [SerializeField]
     UnityEvent OnReleaseItem;
+    [SerializeField]
+    Backpack backpack;
 
     Item storedItem;
 
@@ -31,11 +33,6 @@ public class BackpackSlot : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }        
-    }
-
-    void Update()
-    {
-        
     }
 
     /// <summary>
@@ -84,6 +81,12 @@ public class BackpackSlot : MonoBehaviour
     /// </summary>
     internal void ReleaseItem()
     {
+        if(backpack == null)
+        {
+            Debug.LogError("Backpack not set");
+            return;
+        }
+
         if(OnReleaseItem != null)
         {
             OnReleaseItem.Invoke();
@@ -91,6 +94,8 @@ public class BackpackSlot : MonoBehaviour
 
         if (storedItem != null)
         {
+            backpack.ReleaseItem(storedItem);
+
             storedItem.transform.parent = freeObjects;
             storedItem.transform.localScale = originalScale;
             storedItem.Drop();

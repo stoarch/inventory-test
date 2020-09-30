@@ -17,6 +17,8 @@ public class Backpack : MonoBehaviour
 
     int activeSlotNo = 0;//we need to track last inventory position
 
+    public BackpackSlot this[int index] => slots[index];
+
     void Start()
     {
         
@@ -66,17 +68,33 @@ public class Backpack : MonoBehaviour
     /// <returns>slot in which it placed or null if nothing found</returns>
     internal BackpackSlot PlaceInside(Item item)
     {
-        if(activeSlotNo == slots.Length)
+        if(activeSlotNo == -1)
         {
             Debug.LogWarning("Backpack is full");
             return null;
         }
 
-        var slot = slots[activeSlotNo++];
+        var slot = slots[activeSlotNo];
 
         slot.PlaceInsideAnimated(item);
 
+        FindNewActiveSlotNo();
+
         return slot;
+    }
+
+    private void FindNewActiveSlotNo()
+    {
+        activeSlotNo = -1;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if(slots[i].StoredItem == null)
+            {
+                activeSlotNo = i;
+                break;
+            }
+        }
     }
 
 

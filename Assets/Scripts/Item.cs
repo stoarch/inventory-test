@@ -30,6 +30,7 @@ public class Item : MonoBehaviour
     private const int LEFT_BUTTON = 0;
 
     public bool IsPlacedInSlot { get; set; }
+    public ItemConfig Config => config;
 
     void Start()
     {

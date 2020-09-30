@@ -9,17 +9,9 @@ public class BackpackManager : MonoBehaviour
     Backpack backpack;
     [SerializeField]
     RectTransform panel;
+    [SerializeField]
+    BackpackPanelView backpackView;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void HidePanel()
     {
@@ -29,6 +21,7 @@ public class BackpackManager : MonoBehaviour
         }
 
         panel.gameObject.SetActive(false);
+
     }
 
     public void ShowPanel()
@@ -39,5 +32,7 @@ public class BackpackManager : MonoBehaviour
         }
 
         panel.gameObject.SetActive(true);
+
+        backpackView.ShowBackpack();
     }
 }

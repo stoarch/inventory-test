@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7751312048932278217}
-  m_LocalRotation: {x: -0.18147112, y: 0.07809111, z: 0.38748702, w: 0.90045756}
+  m_LocalRotation: {x: -0.029565426, y: 0.1412951, z: 0.3691614, w: 0.91808575}
   m_LocalPosition: {x: -6.907, y: 4.074, z: -14.136}
   m_LocalScale: {x: 0.36662, y: 0.36662, z: 0.36662}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -22.789001, y: 0, z: 46.567}
+  m_LocalEulerAnglesHint: {x: -9.126, y: 13.925, z: 42.693}
 --- !u!33 &7751312048932278068
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -128,3 +128,7 @@ MonoBehaviour:
   originalColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 0, g: 1, b: 0, a: 1}
   draggingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  backpackMask:
+    serializedVersion: 2
+    m_Bits: 0
+  workDistance: 3

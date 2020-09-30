@@ -99,6 +99,7 @@
     <Compile Include="Assets\Libs\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Scripts\Backpack.cs" />
     <Compile Include="Assets\Scripts\BackpackManager.cs" />
+    <Compile Include="Assets\Scripts\BackpackPanelView.cs" />
     <Compile Include="Assets\Scripts\BackpackSlot.cs" />
     <Compile Include="Assets\Scripts\FreeObjectsManager.cs" />
     <Compile Include="Assets\Scripts\InventoryManager.cs" />

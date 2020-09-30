@@ -8,9 +8,13 @@ public class BackpackSlot : MonoBehaviour
     [SerializeField]
     float moveTime = 1.0f;//sec
     [SerializeField]
+    float scaleTime = 1.0f;//sec
+    [SerializeField]
     Transform itemPlacer;
 
     Item storedItem;
+
+    Vector3 originalScale;
 
     void Start()
     {
@@ -35,11 +39,14 @@ public class BackpackSlot : MonoBehaviour
     {
         storedItem = item;
 
-        LeanTween.move(item.gameObject, transform, moveTime).setOnComplete(MakeParentForItem);
+        MakeParentForItem();
+        LeanTween.move(item.gameObject, itemPlacer.transform, moveTime);//.setOnComplete(MakeParentForItem);
     }
 
     private void MakeParentForItem()
     {
+        originalScale = storedItem.transform.localScale;
         storedItem.gameObject.transform.parent = itemPlacer.transform;
+        storedItem.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
     }
 }

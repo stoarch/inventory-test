@@ -16,7 +16,7 @@ public class Item : MonoBehaviour
     [SerializeField]
     private LayerMask backpackMask;
     [SerializeField]
-    private float workDistance = 2.0f;
+    private float workDistance = 3.0f;
 
     private bool dragging = false;
     private float distance;

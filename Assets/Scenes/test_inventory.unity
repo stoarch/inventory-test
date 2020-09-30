@@ -1858,6 +1858,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 700307390122278779, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 1260751526736247851, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 1453554776951424970, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 2227828862136981676, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 2921115610136013677, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 3389726327581598256, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
     - target: {fileID: 3969387272161851508, guid: 562afc38d44e44d40a8a60222e586c25,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1928,6 +1958,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Backpack
       objectReference: {fileID: 0}
+    - target: {fileID: 5233813506481166229, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 5629556654367009029, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 5757539929162080218, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 6063578755675662425, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 7193036551789943562, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
+    - target: {fileID: 7211696338059085227, guid: 562afc38d44e44d40a8a60222e586c25,
+        type: 3}
+      propertyPath: freeObjects
+      value: 
+      objectReference: {fileID: 473542864}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 562afc38d44e44d40a8a60222e586c25, type: 3}
 --- !u!1001 &4676739822537580249

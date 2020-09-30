@@ -63,16 +63,19 @@ public class Backpack : MonoBehaviour
     ///         is a must.
     /// </remarks>
     /// <param name="item">to place into inventory</param>
-    internal void PlaceInside(Item item)
+    /// <returns>slot in which it placed or null if nothing found</returns>
+    internal BackpackSlot PlaceInside(Item item)
     {
         if(activeSlotNo == slots.Length)
         {
             Debug.LogWarning("Backpack is full");
-            return;
+            return null;
         }
 
         var slot = slots[activeSlotNo++];
 
         slot.PlaceInside(item);
+
+        return slot;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class Item : MonoBehaviour
     private Camera mainCamera;
     private Rigidbody body;
     private new Renderer renderer;
+    private BackpackSlot slotForItem;
 
     private const int MAX_RAYCAST_DIST = 1000;
     private const int LEFT_BUTTON = 0;
@@ -87,12 +89,17 @@ public class Item : MonoBehaviour
                         return;
                     }
 
-                    backpack.PlaceInside(this);
+                    slotForItem = backpack.PlaceInside(this);
 
                     IsPlacedInSlot = true;
                 }
             }
         }        
+    }
+
+    internal void Drop()
+    {
+        body.isKinematic = false;
     }
 
     private void OnMouseDown()
@@ -106,6 +113,11 @@ public class Item : MonoBehaviour
         dragging = true;
         body.isKinematic = true;
         renderer.material.color = draggingColor;
+
+        if(slotForItem != null)
+        {
+            slotForItem.ReleaseItem();
+        }
     }
 
     private void OnMouseUp()
@@ -113,7 +125,7 @@ public class Item : MonoBehaviour
         dragging = false;
         if (!IsPlacedInSlot)
         {
-            body.isKinematic = false;
+            Drop();
         }
 
         renderer.material.color = originalColor;
